@@ -333,6 +333,19 @@ public:
         _handler->onClosed(_parent);
     }
 
+	/**
+	 * Called when applying capabilities for the initial
+	 * handshake with the server. You can add (or remove)
+	 * capabilities from the table at this point.
+	 */
+	void ourCapabilities(Table &caps) {
+		_handler->ourCapabilities(caps);
+	}
+
+	void ourProperties(Table &props) {
+		_handler->ourProperties(props);
+	}
+
     /**
      *  The actual connection is a friend and can construct this class
      */
