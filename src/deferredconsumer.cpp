@@ -21,6 +21,7 @@ const std::shared_ptr<Deferred> &DeferredConsumer::reportSuccess(const std::stri
 {
     // we now know the name, so we can install the message callback on the channel
     _channel->install(name, _messageCallback);
+    _channel->installCancel(name, _cancelCallback);
     
     // skip if no special callback was installed
     if (!_consumeCallback) return Deferred::reportSuccess();

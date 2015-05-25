@@ -34,6 +34,8 @@ private:
      *  @var    MessageCallback
      */
     MessageCallback _messageCallback;
+    
+	CancelCallback _cancelCallback;
 
 
     /**
@@ -115,6 +117,20 @@ public:
     {
         // store callback
         _messageCallback = callback;
+
+        // allow chaining
+        return *this;
+    }
+
+    /**
+     *  Register a function to be called when this consumer
+	 *  is cancelled.
+     *  @param  callback    the callback to execute
+     */
+    DeferredConsumer &onCancel(const CancelCallback &callback)
+    {
+        // store callback
+        _cancelCallback = callback;
 
         // allow chaining
         return *this;
