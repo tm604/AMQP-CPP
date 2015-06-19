@@ -60,6 +60,9 @@
 #pragma comment(lib,"Ws2_32.lib")
 //#	include <sys/param.h>
 
+#define htonll(x) ((((uint64_t)htonl(x)) << 32) + htonl((x) >> 32))
+#define ntohll(x) ((((uint64_t)ntohl(x)) << 32) + ntohl((x) >> 32))
+
 #if BYTE_ORDER == LITTLE_ENDIAN
 
 #define htobe16(x) htons(x)
