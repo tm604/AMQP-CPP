@@ -188,7 +188,7 @@ public:
      *  Output the object to a stream
      *  @param std::ostream
      */
-    virtual void output(std::ostream &stream) const
+    virtual void output(std::ostream &stream) const override
     {
         // prefix
         stream << "table(";
