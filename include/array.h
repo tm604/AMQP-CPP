@@ -206,16 +206,6 @@ public:
         // postfix
         stream << ")";
     }
-
-    /**
-     *  Cast to array
-     *  @return Array
-     */
-    virtual operator const Array& () const override
-    {
-        // this already is an array, so no cast is necessary
-        return *this;
-    }
 };
 
 /**
