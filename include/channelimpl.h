@@ -50,6 +50,12 @@ private:
     std::map<std::string,MessageCallback> _consumers;
 
     /**
+     *  Cancellation callback for all active consumers
+     *  @var    std::map<std::string,CancelCallback>
+     */
+    std::map<std::string,CancelCallback> _consumer_cancel;
+
+    /**
      *  Pointer to the oldest deferred result (the first one that is going
      *  to be executed)
      *
@@ -653,6 +659,20 @@ public:
     }
 
     /**
+     *  Install a cancellation callback
+     *  @param  consumertag     The consumer tag
+     *  @param  callback        The callback to be called
+     */
+    void installCancel(const std::string &consumertag, const CancelCallback &callback)
+    {
+        // install the callback if it is assigned
+        if (callback) _consumer_cancel[consumertag] = callback;
+
+        // otherwise we erase the previously set callback
+        else _consumer_cancel.erase(consumertag);
+    }
+
+    /**
      *  Report that a message was received
      */
     void reportMessage();
@@ -673,6 +693,8 @@ public:
     {
         return _message;
     }
+
+	void onCancel(const std::string &ctag);
 
     /**
      *  The channel class is its friend, thus can it instantiate this object

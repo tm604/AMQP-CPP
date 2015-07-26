@@ -541,6 +541,17 @@ DeferredCancel &ChannelImpl::cancel(const std::string &tag)
     return *deferred;
 }
 
+void ChannelImpl::onCancel(const std::string &ctag)
+{
+    // look for the consumer
+    auto iter = _consumer_cancel.find(ctag);
+    if (iter == _consumer_cancel.end()) return;
+
+    // is this a valid callback method
+    if (!iter->second) return;
+	(iter->second)(ctag);
+}
+
 /**
  *  Retrieve a single message from RabbitMQ
  * 

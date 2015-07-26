@@ -188,6 +188,7 @@ public:
         
         // we want a special treatment for authentication failures
         capabilities["authentication_failure_close"] = true;
+		connection->ourCapabilities(capabilities);
         
         // the peer properties
         Table properties;
@@ -199,6 +200,7 @@ public:
         properties["copyright"] = "Copyright 2014 Copernica BV";
         properties["information"] = "http://www.copernica.com";
         properties["capabilities"] = capabilities;
+		connection->ourProperties(properties);
         
         // move connection to handshake mode
         connection->setProtocolOk();

@@ -76,6 +76,8 @@ public:
      */
     virtual void onClosed(Connection *connection) {}
 
+	virtual void ourCapabilities(Table &caps) { }
+	virtual void ourProperties(Table &props) { }
 };
 
 /**
