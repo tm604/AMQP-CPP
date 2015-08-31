@@ -1,0 +1,23 @@
+AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker. The
+library can be used to parse incoming data from a RabbitMQ server, and to
+generate frames that can be sent to a RabbitMQ server.
+
+Unlike all other AMQP libraries, this AMQP-CPP library does not make a connection to
+RabbitMQ by itself, nor does it create sockets and/or performs IO operations. As
+a user of this library, you first need to set up a socket connection
+to RabbitMQ by yourself, and implement a certain interface that you pass to the
+AMQP-CPP library and that the library will use for IO operations.
+
+This architecture makes the library extremely flexible: it does not rely on
+operating system specific IO calls, and it can be easily integrated into any
+event loop. It is fully asynchronous and does not do any blocking (system) calls,
+so it can be used in high performance applications without the need for threads.
+
+The AMQP-CPP library uses C++11 features, so if you intend use it, please make 
+sure that your compiler is up-to-date and supports C++11.
+
+This library is created and maintained by Copernica (www.copernica.com), and is
+used inside the MailerQ (www.mailerq.com) and AMQPipe (www.amqpipe.com) applications. 
+MailerQ is a tool for sending large volumes of email, using AMQP message queues,
+and AMQPipe is a tool for high-speed processing messages between AMQP pipes
+
