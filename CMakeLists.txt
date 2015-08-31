@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(amqp-cpp)
+set (VERSION_MAJOR 2)
+set (VERSION_MINOR 2)
+set (VERSION_PATCH 0)
+set (PROJECT_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+set (PROJECT_VERSION_REVISION 2)
 
 # ensure c++11 on all compilers
 include(set_cxx_norm.cmake)
