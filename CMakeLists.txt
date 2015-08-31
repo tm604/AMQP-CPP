@@ -30,7 +30,6 @@ add_subdirectory(src)
 add_subdirectory(include)
 
 add_library(amqp-cpp STATIC ${SRCS})
-target_include_directories(amqp-cpp SYSTEM PUBLIC ${PROJECT_SOURCE_DIR})
 install(TARGETS amqp-cpp
         ARCHIVE DESTINATION lib
 )
